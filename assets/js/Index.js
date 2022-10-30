@@ -1,0 +1,1 @@
+let _$ = (selector) => document.querySelector(selector);

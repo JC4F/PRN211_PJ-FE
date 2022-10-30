@@ -1,0 +1,24 @@
+.custome-container {
+    background-color: transparent;
+    padding: 50px;
+    font-size: 62.5%;
+    font-family: 'Montserrat',Arial,Helvetica,sans-serif;
+}
+#nav-tab {
+    font-size: 1rem;
+    margin-bottom: 40px;
+}
+.tab-content {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+.preview-image {
+    margin-top: 14px;
+    width: 300px;
+    max-height: 300px;
+}
+.question-wrapper, .quizz-wrapper {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 6px;
+}
