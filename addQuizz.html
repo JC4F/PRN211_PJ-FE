@@ -38,6 +38,17 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
+                        <label for="quizz-subject" class="col-sm-2 form-label">Select Subject</label>
+                        <div class="col-sm-10">
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected value="0">Choose one subject</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                              </select>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
                         <label for="quizz-code" class="col-sm-2 col-form-label">Quizz Code</label>
                         <div class="col-sm-10">
                           <input type="text" class="form-control" id="quizz-code">
@@ -68,36 +79,37 @@
                 <div class="quizz-add__wrapper">
                     <div class="header-control">
                         <button type="button" class="btn btn-secondary">Add new question</button>
+                        <button type="button" class="btn btn-success">Add Quizz</button>
                     </div>
-                    <div class="question-quizz__wrapper row">
+                    <div class="question-quizz__wrapper row my-3">
                         <div class="col-sm-8">
                             <div class="question-wrapper">
                                 <div class="add-question">
                                     <div class="add-question__heading">
-                                        <span>Exercise 1: (Mutiple Choice)</span>
+                                        <span>Exercise <span class="add-question__index">1</span>: (Mutiple Choice)</span>
                                         <button type="button" class="btn btn-info">Add to quizz</button>
                                     </div>
                                     <div class="add-question__content">
                                         <div class="mb-3">
-                                            <label for="question-content" class="form-label">Example textarea</label>
+                                            <label for="question-content" class="form-label">Question content</label>
                                             <textarea class="form-control" id="question-content" rows="3"></textarea>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="add-answer">
+                                <div class="add-answer my-5">
                                     <div class="add-answer__List">
                                         <div class="add-answer__item">
                                             <div class="mb-3 row">
                                                 <label class="col-sm-1 col-form-label">
                                                     <input class="form-check-input mx-1" type="checkbox">
-                                                    <span>A.</span>
+                                                    <span>A</span>
                                                 </label>
                                                 <div class="col-sm-8">
                                                   <input type="text" class="form-control">
                                                 </div>
-                                                <div class="col-sm-2">
+                                                <div class="col-sm-2 aai-action__wrapper">
                                                     <i class="fa-solid fa-circle-plus"></i>
-                                                    <i class="fa-solid fa-trash-can"></i>
+                                                    <!-- <i class="fa-solid fa-trash-can"></i> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -109,11 +121,16 @@
                             <div class="quizz-wrapper">
                                 <div class="quizz-wrapper__heading">
                                     <span>List of Quizz</span>
-                                    <input class="form-check-input mx-1" type="checkbox">
-                                    <button type="button" class="btn btn-danger">Delete all</button>
+                                    <div class="form-check">
+                                        <input class="form-check-input mx-1" type="checkbox" value="" id="qwh-check-all">
+                                        <label class="form-check-label" for="qwh-check-all">
+                                          Check all
+                                        </label>
+                                      </div>
+                                    <button type="button" class="btn btn-danger">Delete selected</button>
                                 </div>
                                 <div class="quizz-wrapper__list">
-                                    <div class="quizz-wrapper__item">
+                                    <!-- <div class="quizz-wrapper__item">
                                         <div class="qw-item__left">
                                             <input class="form-check-input mx-1" type="checkbox">
                                             <span>Exercise 1</span>
@@ -121,7 +138,7 @@
                                         <div class="qw-item__right">
                                             <i class="fa-solid fa-trash-can"></i>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>

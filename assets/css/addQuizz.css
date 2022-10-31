@@ -22,3 +22,48 @@
     padding: 10px;
     border-radius: 6px;
 }
+.add-question__heading {
+    background-color: #ddd;
+    padding-left: 6px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+.add-question__content {
+    padding-left: 6px;
+}
+.aai-action__wrapper {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 20px;
+}
+.aai-action__wrapper i, .qw-item__right i {
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+}
+.aai-action__wrapper i:hover, .qw-item__right i:hover {
+    background-color: #e3d7d7;
+}
+.quizz-wrapper__heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ddd;
+    padding-left: 6px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+.quizz-wrapper__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.qw-item__left span {
+    cursor: pointer;
+}
