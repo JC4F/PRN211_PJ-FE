@@ -4,10 +4,11 @@ let listQues = [];
 let toastElement = _$('.toast');
 let toast = new bootstrap.Toast(toastElement)
 let toastBody = _$('.toast-body');
-let errorMess='';
+let mess='';
+let image=''
 //handle event toast
 toastElement.addEventListener('show.bs.toast', () => {
-    toastBody.innerHTML = errorMess
+    toastBody.innerHTML = mess
 })
 
 const handleImages = () => {
@@ -17,6 +18,11 @@ const handleImages = () => {
         const [file] = inputImage.files
         if (file) {
             _$('.preview-image').src = URL.createObjectURL(file)
+            let reader = new FileReader();
+            reader.onloadend = function() {
+                image = reader.result;
+            }
+            reader.readAsDataURL(file);
         }
     })
 }
@@ -106,6 +112,29 @@ const renderItemToListQuiz = () => {
     nextItem.querySelector('input').addEventListener('click', handleVerifyCheckAll)
     nextItem.querySelector('input + span').addEventListener('click', handleClickSelect)
 }
+const verifyAddQuizz = (question, ansList) => {
+    if(question.trim()===''){
+        mess='Question is required!';
+        toast.show()
+        return false
+    }
+    if(ansList.some(cur => cur.answer.trim()==='')){
+        mess='One of answer is empty!';
+        toast.show()
+        return false
+    }
+    if(ansList.length===1){
+        mess='Answer must more than one!';
+        toast.show()
+        return false
+    }
+    if(!ansList.some(cur => cur.istrue===true)){
+        mess='Question must have correct answer!';
+        toast.show()
+        return false
+    }
+    return true;
+}
 const handleAddQuiz = () => {
     let addToQuizzBtn = _$('.add-question__heading button');
     addToQuizzBtn.addEventListener('click', ()=>{
@@ -118,6 +147,7 @@ const handleAddQuiz = () => {
                 }
         })
         if(addToQuizzBtn.innerHTML=='Add to Quizz'){
+            if(!verifyAddQuizz(question, ansList)) return;
             let singleQues = {
                 question, ansList
             }
@@ -125,9 +155,14 @@ const handleAddQuiz = () => {
             renderItemToListQuiz()
             handleAddNextQuestion()
             handleClearOtherWhenAddQuizz();
+            mess='Add success!';
+            toast.show()
         } else if(addToQuizzBtn.innerHTML=='Update Quizz'){
+            if(!verifyAddQuizz(question, ansList)) return;
             let index = +_$('.add-question__index').innerHTML-1;
             listQues[index] = {...listQues[index], question, ansList}
+            mess='Update success!';
+            toast.show()
         }
     })
 }
@@ -241,23 +276,43 @@ const handleSelectQuestion = ()=>{
     }
 }
 
+const verifySubmitQuizz = (quizzInfo, listQues)=>{
+    if(Object.entries(quizzInfo).some(cur => cur[1].trim()==='')){
+        mess='All quizz information is required!';
+        toast.show()
+        return false
+    }
+    if(listQues.length===0){
+        mess='Quizz required at list one question!';
+        toast.show()
+        return false
+    }
+    return true;
+}
 const handleSubmitAddQuizz = () => {
     let submitBtn = _$('.header-control .btn-success')
     submitBtn.addEventListener('click', () =>{
-        console.log(listQues)
+        let quizzInfo = {
+            title: _$('#quizz-title').value,
+            description: _$('#quizz-description').value,
+            subjectId: _$('#quizz-subject').value,
+            code: _$('#quizz-code').value,
+            time: _$('#quizz-time').value,
+            image,
+        }
+        if(!verifySubmitQuizz(quizzInfo, listQues)) return;
+        let allData = {
+            ...quizzInfo,
+            listQues
+        }
+
+        console.log(allData)
     })
 }
 
 const handleAddQuizzToSystem = ()=>{
     handleImages();
     let allData = {}
-    let quizzInfo = {
-        title: "",
-        description: "",
-        subjectId: "",
-        code: "",
-        time: ""
-    };
 
     handleAddNewAnswer()
     handleAddNewQuestion()
