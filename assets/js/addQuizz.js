@@ -306,7 +306,7 @@ const handleSubmitAddQuizz = () => {
             listQues
         }
 
-        console.log(allData)
+        console.log(JSON.stringify(allData))
     })
 }
 

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./assets/css/lib/bootstrap.min.css" rel="stylesheet">
+    <script src="./assets/js/lib/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="./assets/js/lib/jquery.min.js"></script>
+    <script src="./assets/js/lib/ckeditor.js"></script>
+    <link rel="stylesheet" href="./assets/css/TakeExam.css">
+    <title>Add News</title>
+</head>
+<body>
+    <div class="custome-container">
+        <div class="quizz-info">
+            <h2>Quizz title</h2>
+            <p>Quizz description</p>
+        </div>
+        <div class="question-quizz__wrapper row my-3">
+            <div class="col-sm-8">
+                <div class="question-wrapper">
+                    <div class="show-question">
+                        <p>Exercise <span class="choose-question__index">1</span>: (Mutiple Choice)</p>
+                        <div class="question-content">
+                            Cau hoi duoc show o day
+                        </div>
+                    </div>
+                    <div class="choose-answer my-3">
+                        <div class="choose-answer__List">
+                            <!-- <div class="choose-answer__item">
+                                <div class="mb-2 row align-items-center">
+                                    <label class="col-sm-2 col-form-label">
+                                        <input class="form-check-input mx-1" type="checkbox">
+                                        <span>A</span>.
+                                    </label>
+                                    <div class="col-sm-8">
+                                      <p>Cau tra loi so 1</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="choose-answer__item">
+                                <div class="mb-2 row align-items-center">
+                                    <label class="col-sm-2 col-form-label">
+                                        <input class="form-check-input mx-1" type="checkbox">
+                                        <span>A</span>.
+                                    </label>
+                                    <div class="col-sm-8">
+                                      <p>Cau tra loi so 1</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="choose-answer__item">
+                                <div class="mb-2 row align-items-center">
+                                    <label class="col-sm-2 col-form-label">
+                                        <input class="form-check-input mx-1" type="checkbox">
+                                        <span>A</span>.
+                                    </label>
+                                    <div class="col-sm-8">
+                                      <p>Cau tra loi so 1</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="choose-answer__item">
+                                <div class="mb-2 row align-items-center">
+                                    <label class="col-sm-2 col-form-label">
+                                        <input class="form-check-input mx-1" type="checkbox">
+                                        <span>A</span>.
+                                    </label>
+                                    <div class="col-sm-8">
+                                      <p>Cau tra loi so 1</p>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="action-wrapper">
+                    <div class="count-down">
+                        <p>
+                            <!-- 00 : 00 : 00 -->
+                        </p>
+                    </div>
+                    <div class="ques-index_list mb-2">
+                        <!-- <button type="button" class="btn btn-light">1</button>
+                        <button type="button" class="btn btn-light">1</button>
+                        <button type="button" class="btn btn-light">1</button>
+                        <button type="button" class="btn btn-light">1</button>
+                        <button type="button" class="btn btn-light">1</button> -->
+                    </div>
+                    <div class="action-detail">
+                        <button type="button" class="btn btn-success">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- toast mess -->
+        <div class="toast align-items-center text-white bg-primary border-0 position-absolute top-0 end-0" role="alert" aria-live="assertive"
+            aria-atomic="true" autohide="true" data-bs-delay="2000">
+            <div class="d-flex">
+                <div class="toast-body">
+                    At least one tag is required!
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+    <script src="./assets/js/TakeExam.js"></script>
+</body>
+</html>
