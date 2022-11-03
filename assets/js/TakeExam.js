@@ -43,13 +43,27 @@ const fakeListQues = () => {
 }
 const handleChangeSelectQuestion = () => {
     let allQues = document.querySelectorAll('.ques-index_list button')
-    for(let ques of allQues){
-        ques.className = 'btn btn-light mx-2'
+    for(let i=0; i<allQues.length; i++) {
+        if(userAns[i].ansList.length===0)
+            allQues[i].className = 'btn btn-light mx-2'
+        else
+            allQues[i].className = 'btn btn-success mx-2'
     }
 }
 const handleChooseAnswer = (e) => {
     let clickSelect = e.srcElement;
     let questionId = +clickSelect.closest('.question-wrapper').querySelector('.choose-question__index').innerHTML
+    let ansListTmp = []
+    let answerLoops = document.querySelectorAll('.choose-answer__List input[type="checkbox"]')
+    for(let answerLoop of answerLoops){
+        if(answerLoop.checked)
+            ansListTmp = [...ansListTmp, +answerLoop.closest('.align-items-center').dataset.ansid]
+        else
+            ansListTmp = ansListTmp.filter(item => item !== (+answerLoop.closest('.align-items-center').dataset.ansid))
+    }
+    let newAnswer = {questionId, ansList: ansListTmp}
+
+    userAns.forEach(function(item, i) { if (item.questionId == questionId) userAns[i] = newAnswer; });
 }
 const handleClickSelectQuestion = (e) => {
     let clickSelect = e.srcElement;
@@ -63,20 +77,53 @@ const handleClickSelectQuestion = (e) => {
     for(let allAsnwer of allAsnwers)
         allAsnwer.remove()
 
-    listQues[index-1].ansList.forEach((cur, index)=>{
+    listQues[index-1].ansList.forEach((cur, indexTmp)=>{
         let nextAnswer = document.createElement('div');
         nextAnswer.className ='choose-answer__item';
         nextAnswer.innerHTML = `<div class="mb-2 row align-items-center" data-ansid="${cur.ansId}">
             <label class="col-sm-2 col-form-label">
-                <input class="form-check-input mx-1" type="checkbox">
-                <span>${alphabets[index]}</span>.
+                <input class="form-check-input mx-1" type="checkbox"  ${userAns[index-1]?.ansList?.includes(cur.ansId)? 'checked':''}>
+                <span>${alphabets[indexTmp]}</span>.
             </label>
             <div class="col-sm-8">
             <p>${cur.answer}</p>
             </div>
         </div>`;
         _$('.choose-answer__List').appendChild(nextAnswer)
+
+        let nextAnswerCheckbox = nextAnswer.querySelector('input[type="checkbox"]')
+        nextAnswerCheckbox.addEventListener('click', handleChooseAnswer)
     })
+}
+const handleClientSubmitData = () => {
+    //tinh toan score, prepare data
+    let data = {}, QuizzId=0
+    let Score = 0;
+    let AsnArr = ''
+    for(let eachQues of listQues){
+        let answer = userAns.find(item => item.questionId===eachQues.question.id)
+        let userAnswerList = answer.ansList
+        AsnArr = [...AsnArr, ...userAnswerList]
+        let answerOfQuestionList = []
+        eachQues.ansList.forEach(cur => {
+            if(cur.istrue){
+                answerOfQuestionList.push(cur.ansId)
+            }
+        })
+        if(JSON.stringify(answerOfQuestionList.sort())===JSON.stringify(userAnswerList.sort())){
+            Score++
+        }
+    }
+    data = {QuizzId, Score, AsnArr:JSON.stringify(AsnArr)}
+    //ajax submit data
+    console.log(data)
+
+    //show dap an, score
+
+}
+const handleClickSubmit = () => {
+    let submitBtn = _$('.modal-footer .btn-primary')
+    submitBtn.addEventListener('click', handleClientSubmitData)
 }
 let x = setInterval(function() {
     let hours = Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -112,5 +159,6 @@ const handleOnLoadData = () => {
 
 const takeExam = () => {
     handleOnLoadData()
+    handleClickSubmit()
 }
 takeExam()

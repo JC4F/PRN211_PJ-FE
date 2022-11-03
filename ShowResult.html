@@ -11,7 +11,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="./assets/js/lib/jquery.min.js"></script>
     <script src="./assets/js/lib/ckeditor.js"></script>
-    <link rel="stylesheet" href="./assets/css/TakeExam.css">
+    <link rel="stylesheet" href="./assets/css/ShowResult.css">
     <title>Add News</title>
 </head>
 <body>
@@ -19,6 +19,7 @@
         <div class="quizz-info">
             <h2>Quizz title</h2>
             <p>Quizz description</p>
+            <p>Your score is <span class="right-ans">1</span>/<span class="num-ques">3</span></p>
         </div>
         <div class="question-quizz__wrapper row my-3">
             <div class="col-sm-8">
@@ -28,9 +29,12 @@
                         <div class="question-content">
                             Cau hoi duoc show o day
                         </div>
+                        <span class="right-answer"></span>
                     </div>
                     <div class="choose-answer my-3">
                         <div class="choose-answer__List">
+                            <!-- <i class="fa-solid fa-check"></i>
+                            <i class="fa-solid fa-xmark"></i> -->
                             <!-- <div class="choose-answer__item">
                                 <div class="mb-2 row align-items-center">
                                     <label class="col-sm-2 col-form-label">
@@ -83,7 +87,7 @@
                 <div class="action-wrapper">
                     <div class="count-down">
                         <p>
-                            <!-- 00 : 00 : 00 -->
+                            00 : 00 : 00
                         </p>
                     </div>
                     <div class="ques-index_list mb-2">
@@ -129,6 +133,6 @@
             </div>
         </div>
     </div>
-    <script src="./assets/js/TakeExam.js"></script>
+    <script src="./assets/js/ShowResult.js"></script>
 </body>
 </html>
