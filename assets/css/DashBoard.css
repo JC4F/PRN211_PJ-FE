@@ -1,0 +1,43 @@
+.custome-container {
+    background-color: transparent;
+    padding: 50px;
+    font-size: 62.5%;
+    font-family: 'Montserrat',Arial,Helvetica,sans-serif;
+    font-size: 1.1rem;
+}
+.main-header h1 {
+    font-size: 1.9rem;
+    margin-bottom: 30px;
+}
+
+.general-statistic .GS__item-general {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    min-height: 100px;
+    background-color: white;
+    box-shadow: 0 4px 25px 0 rgba(168, 180, 208, 0.1);
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 12px;
+}
+  
+.general-statistic .GS__item-general h4 {
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+  
+.general-statistic .GS__item-general p {
+    font-size: 2rem;
+    font-weight: 500;
+}
+  
+.general-statistic .GS__item-general span {
+    font-size: 2.8rem;
+}
+  
+.detail-statistic {
+    margin-top: 80px;
+}
